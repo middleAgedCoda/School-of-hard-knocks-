@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The School of Hard Knocks — The Bloomberg of Street Entrepreneurship</title>
+<meta name="description" content="The School of Hard Knocks — Founded 2021 by James, Jack & Joshua. 20M+ audience. $500K+/month. 1,000+ millionaires interviewed. 15 billionaires. Will Smith. Mark Cuban. Gary Vee. The Bloomberg of street entrepreneurship."/>
+<meta property="og:title" content="The School of Hard Knocks — Street Authority"/>
+<meta property="og:description" content="20M+ followers. $500K+/month. 1,000+ millionaires interviewed. The media empire pretending to be a YouTube channel."/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="theme-color" content="#080808"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,600&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════════════════════════
+   KURO DIGITAL — THE SCHOOL OF HARD KNOCKS
+   "STREET AUTHORITY"
+
+   Founded 2021 · James, Jack & Joshua Dumoulin + Joshua Smith
+   "Excuse me sir, how did you become successful?"
+   20M+ cross-platform · $500K+/month · 1,000+ millionaires
+   1 mic, 1 sidewalk, 1 question — and everything changed.
+
+   ──────────────────────────────────────────────────────────
+   The concept: The site IS an interview.
+   Every section header is a question directed at the brand.
+   The format that built 20M followers runs the website too.
+
+   --blk    #080808   Street night · the pavement
+   --blk2   #111111   Deep surface
+   --blk3   #1A1A1A   Card surface
+   --blk4   #242424   Elevated
+   --blk5   #333333   Border
+   --wht    #F5F5F0   Off-white · documentary subtitles
+   --wht2   #DDDDDA   Muted white
+   --wht3   #999992   Caption grey
+   --yel    #FFD400   Signal yellow · the hook · THE mic
+   --yel2   #CC9900   Deep yellow
+   --yel-dim rgba(255,212,0,.12)
+   --grey   #888884   Archive grey
+   ──────────────────────────────────────────────────────────
+   Barlow Condensed — documentary title · bold · authoritative
+   Lato             — journalistic body · clean · readable
+   DM Mono          — stats · data · terminal
+   ──────────────────────────────────────────────────────────
+   Kuro Digital — kuro-digital-acid-lime.onrender.com
+═══════════════════════════════════════════════════════════ */
+
+:root{
+  --blk:  #080808; --blk2:#111111; --blk3:#1A1A1A; --blk4:#242424; --blk5:#333333;
+  --wht:  #F5F5F0; --wht2:#CCCCCA; --wht3:#888884;
+  --yel:  #FFD400; --yel2:#CC9900; --yel3:#9A7000;
+  --yel-dim:rgba(255,212,0,.12); --yel-glow:rgba(255,212,0,.2);
+  --grey: #484842;
+  --line: rgba(255,255,255,.07); --line2:rgba(255,255,255,.12);
+  --fd:'Barlow Condensed',sans-serif;
+  --fs:'Lato',sans-serif;
+  --fm:'DM Mono',monospace;
+  --sw:min(1360px,100vw - 48px); --r:.25s ease;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--blk);color:var(--wht);font-family:var(--fs);cursor:none;overflow-x:hidden}
+
+/* Film grain */
+body::after{content:'';position:fixed;inset:0;z-index:9989;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)' opacity='0.025'/%3E%3C/svg%3E");
+  mix-blend-mode:screen;opacity:.6}
+
+/* ── HOT MIC CURSOR ── */
+#cur{width:8px;height:8px;background:var(--yel);border-radius:50%;position:fixed;z-index:9997;pointer-events:none;transform:translate(-50%,-50%);transition:width .2s,height .2s;box-shadow:0 0 10px var(--yel-glow)}
+#cur-r{width:24px;height:24px;border:1.5px solid rgba(255,212,0,.35);border-radius:50%;position:fixed;z-index:9996;pointer-events:none;transform:translate(-50%,-50%);transition:width .28s,height .28s}
+body.hov #cur{width:14px;height:14px}
+body.hov #cur-r{width:46px;height:46px;border-color:rgba(255,212,0,.55)}
+@media(pointer:coarse){#cur,#cur-r{display:none}body{cursor:auto}}
+
+/* ── LOADER ── */
+#loader{position:fixed;inset:0;z-index:9000;background:var(--blk);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:opacity 1s,visibility 1s}
+#loader.out{opacity:0;visibility:hidden;pointer-events:none}
+.ll{font-family:var(--fm);font-size:.48rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blk5);opacity:0;animation:rUp .6s ease forwards}
+.ll:nth-child(1){animation-delay:.1s}
+.ll:nth-child(2){animation-delay:.3s;color:var(--grey)}
+.ll:nth-child(3){animation-delay:.5s;color:var(--yel3)}
+.ll-q{font-family:var(--fd);font-size:clamp(.9rem,3vw,1.2rem);font-weight:300;font-style:italic;color:var(--wht2);letter-spacing:.06em;opacity:0;animation:rUp .7s .65s ease forwards;text-align:center}
+.ll-q em{color:var(--yel);font-style:normal;font-weight:700}
+.ll-name{font-family:var(--fd);font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;color:var(--wht);letter-spacing:.04em;text-transform:uppercase;opacity:0;animation:rUp .9s .8s ease forwards}
+.ll-name span{color:var(--yel)}
+.lbar{width:200px;height:2px;background:var(--blk4);overflow:hidden}
+.lbar-f{height:100%;width:0%;background:linear-gradient(to right,var(--yel3),var(--yel))}
+@keyframes rUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ── NAV ── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:800;height:60px;padding:0 48px;display:flex;align-items:center;justify-content:space-between;transition:background .4s,border-bottom-color .4s;border-bottom:1px solid transparent}
+#nav.stk{background:rgba(8,8,8,.94);backdrop-filter:blur(16px);border-bottom-color:var(--line)}
+.nl{font-family:var(--fd);font-size:1.45rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--wht);text-decoration:none}
+.nl span{color:var(--yel)}
+.nls{display:flex;gap:24px;list-style:none}
+.nls a{font-family:var(--fm);font-size:.44rem;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);text-decoration:none;transition:color var(--r)}
+.nls a:hover{color:var(--yel)}
+.ncta{font-family:var(--fm);font-size:.44rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blk);background:var(--yel);padding:8px 20px;text-decoration:none;transition:background var(--r)}
+.ncta:hover{background:var(--yel2)}
+.ham{display:none;background:none;border:none;cursor:none;padding:8px;flex-direction:column;gap:5px}
+.ham span{display:block;width:22px;height:1.5px;background:var(--yel)}
+#mob{display:none;position:fixed;inset:0;z-index:790;background:var(--blk);padding:80px 48px 48px;flex-direction:column;gap:0}
+#mob.open{display:flex}
+#mob a{font-family:var(--fd);font-size:clamp(2.5rem,9vw,5rem);font-weight:700;text-transform:uppercase;color:var(--wht);text-decoration:none;padding:10px 0;border-bottom:1px solid var(--line);transition:color var(--r);letter-spacing:.04em}
+#mob a:hover{color:var(--yel)}
+@media(max-width:900px){.nls,.ncta{display:none}.ham{display:flex}}
+@media(max-width:600px){#nav{padding:0 24px}#mob{padding:70px 24px 24px}}
+
+/* ── SECTION UTILS ── */
+.sec{padding:120px 48px;position:relative;overflow:hidden;z-index:1}
+.sec-blk{background:var(--blk)}
+.sec-blk2{background:var(--blk2)}
+.sec-blk3{background:var(--blk3)}
+.sec-wht{background:var(--wht);color:var(--blk)}
+.sw{max-width:var(--sw);margin:0 auto}
+
+/* The interview question headers — the signature element */
+.iq{font-family:var(--fm);font-size:.46rem;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);margin-bottom:8px;display:flex;align-items:center;gap:12px}
+.iq::before{content:'Q';width:20px;height:20px;background:var(--yel);color:var(--blk);font-size:.5rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--fm)}
+.iq-lt{color:rgba(8,8,8,.35)}.iq-lt::before{background:rgba(8,8,8,.2);color:rgba(8,8,8,.5)}
+
+/* Display headings */
+.tt{font-family:var(--fd);font-size:clamp(3.5rem,6.5vw,8rem);font-weight:800;line-height:.88;color:var(--wht);letter-spacing:.02em;text-transform:uppercase}
+.tt em{color:var(--yel);font-style:normal}
+.tt-dk{color:var(--blk)}.tt-dk em{color:var(--blk3)}
+.ttsm{font-family:var(--fd);font-size:clamp(2.5rem,4.5vw,5.5rem);font-weight:700;line-height:.9;color:var(--wht);letter-spacing:.03em;text-transform:uppercase}
+.ttsm em{color:var(--yel);font-style:normal}
+.ttsm-dk{color:var(--blk)}.ttsm-dk em{color:var(--blk3)}
+
+.bb{font-family:var(--fs);font-size:.92rem;line-height:2;color:var(--wht3)}
+.bb strong{color:var(--wht);font-weight:700}
+.bb em{color:var(--yel);font-style:italic}
+.bb-dk{font-family:var(--fs);font-size:.92rem;line-height:2;color:rgba(8,8,8,.5)}
+.bb-dk strong{color:var(--blk);font-weight:700}
+
+.bt-yel{font-family:var(--fm);font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blk);background:var(--yel);padding:13px 28px;text-decoration:none;display:inline-block;border:2px solid var(--yel);transition:all var(--r)}
+.bt-yel:hover{background:var(--yel2);border-color:var(--yel2)}
+.bt-ghost{font-family:var(--fm);font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:var(--wht);background:transparent;padding:13px 28px;text-decoration:none;display:inline-block;border:2px solid var(--line2);transition:all var(--r)}
+.bt-ghost:hover{border-color:var(--yel);color:var(--yel)}
+.bt-blk{font-family:var(--fm);font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:var(--wht);background:var(--blk);padding:13px 28px;text-decoration:none;display:inline-block;border:2px solid rgba(8,8,8,.2);transition:all var(--r)}
+.bt-blk:hover{background:var(--blk3);border-color:var(--blk3)}
+
+.rv{opacity:0;transform:translateY(20px);transition:opacity .9s ease,transform .9s ease}
+.rvl{opacity:0;transform:translateX(-20px);transition:opacity .9s ease,transform .9s ease}
+.rvr{opacity:0;transform:translateX(20px);transition:opacity .9s ease,transform .9s ease}
+.rv.on,.rvl.on,.rvr.on{opacity:1;transform:none}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+@media(max-width:900px){.g2{grid-template-columns:1fr;gap:40px}.sec{padding:80px 24px}}
+
+/* ══════════════════════════════════════
+   HERO — THE CORNER
+══════════════════════════════════════ */
+#hero{min-height:100vh;background:var(--blk);position:relative;display:flex;flex-direction:column;overflow:hidden;padding-top:60px}
+
+/* Street grain — the asphalt texture */
+#hero::before{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(to right,rgba(8,8,8,.96) 0%,rgba(8,8,8,.6) 40%,rgba(8,8,8,.3) 55%,rgba(8,8,8,.8) 100%),
+             linear-gradient(to top,rgba(8,8,8,.98) 0%,transparent 55%),
+             radial-gradient(ellipse 60% 70% at 20% 30%,rgba(255,212,0,.04),transparent 70%)}
+
+/* City grid overlay */
+#hero::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);
+  background-size:80px 80px}
+
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;filter:brightness(.3) contrast(1.3) saturate(0)}
+
+/* Yellow mic line — runs down the left */
+.hero-mic{position:absolute;top:0;bottom:0;left:48px;width:3px;z-index:4;pointer-events:none;
+  background:linear-gradient(to bottom,transparent 5%,var(--yel) 20%,var(--yel) 80%,transparent 95%);
+  box-shadow:0 0 20px var(--yel-glow);opacity:0;animation:rUp .4s .3s ease forwards}
+
+.hero-main{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:0 80px 80px;position:relative;z-index:4;min-height:calc(100vh - 180px)}
+
+/* The "Excuse me" hook */
+.hero-hook{font-family:var(--fd);font-size:clamp(1rem,2vw,1.4rem);font-weight:300;font-style:italic;color:var(--wht3);margin-bottom:16px;display:flex;align-items:center;gap:16px;opacity:0;animation:rUp .8s .4s ease forwards}
+.hero-hook::before{content:'';width:3px;height:28px;background:var(--yel)}
+.hero-hook em{color:var(--yel);font-style:italic;font-weight:600}
+
+.hero-h1{font-family:var(--fd);font-size:clamp(4.5rem,9vw,12rem);font-weight:900;line-height:.82;letter-spacing:.02em;text-transform:uppercase;color:var(--wht);margin-bottom:8px;opacity:0;animation:rUp .9s .6s ease forwards}
+.hero-h1 em{display:block;color:var(--yel);font-style:normal}
+
+.hero-tagline{font-family:var(--fs);font-size:clamp(.88rem,1.4vw,1.05rem);color:var(--wht3);margin-bottom:28px;opacity:0;animation:rUp .8s .85s ease forwards;line-height:1.8;max-width:520px}
+.hero-tagline strong{color:var(--wht);font-weight:700}
+
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:rUp .8s 1s ease forwards}
+
+/* Stat band */
+.hero-stats{display:grid;grid-template-columns:repeat(5,1fr);border-top:2px solid var(--yel);position:relative;z-index:4;opacity:0;animation:rUp .9s 1.2s ease forwards}
+.hst{padding:20px 22px;border-right:1px solid var(--line);cursor:default;transition:background var(--r)}
+.hst:last-child{border-right:none}
+.hst:hover{background:var(--yel-dim)}
+.hstv{font-family:var(--fd);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;color:var(--wht);line-height:1;letter-spacing:.02em;text-transform:uppercase}
+.hstv em{color:var(--yel);font-style:normal}
+.hstl{font-family:var(--fm);font-size:.4rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-top:4px}
+
+/* Channel logo in top right of hero */
+.hero-logo-badge{position:absolute;top:80px;right:60px;z-index:4;display:flex;flex-direction:column;align-items:flex-end;gap:8px;opacity:0;animation:rUp .8s .5s ease forwards}
+.hlb-img{width:72px;height:72px;border-radius:50%;border:2px solid var(--yel);object-fit:cover;filter:grayscale(.3)}
+.hlb-sub{font-family:var(--fm);font-size:.4rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grey)}
+
+@media(max-width:900px){.hero-main{padding:0 40px 60px}.hero-stats{grid-template-columns:1fr 1fr}.hero-logo-badge{display:none}}
+@media(max-width:600px){.hero-main{padding:0 24px 50px}.hero-h1{font-size:clamp(3.5rem,16vw,7rem)}.hero-stats{grid-template-columns:1fr 1fr}}
+
+/* ── TICKER ── */
+.ticker{background:var(--yel);overflow:hidden;position:relative;z-index:2}
+.ttrack{display:flex;width:max-content;animation:tScr 40s linear infinite}
+.ti{font-family:var(--fm);font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(8,8,8,.75);padding:11px 22px;white-space:nowrap;flex-shrink:0}
+.tsep{color:rgba(8,8,8,.3);padding:0 8px}
+@keyframes tScr{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ══════════════════════════════════════
+   Q1 — WHAT DO YOU DO FOR A LIVING?
+══════════════════════════════════════ */
+#q1{background:var(--wht)}
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch}
+.what-left{background:var(--blk);padding:80px 60px;position:relative;overflow:hidden}
+.what-left::before{content:'';position:absolute;top:0;left:0;bottom:0;width:4px;background:var(--yel)}
+.what-right{background:var(--wht);padding:80px 60px;color:var(--blk)}
+.what-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:24px}
+.ws{background:var(--blk2);padding:22px 18px;border:1px solid var(--line);cursor:default;transition:background var(--r)}
+.ws:hover{background:var(--yel-dim)}
+.wsv{font-family:var(--fd);font-size:clamp(2rem,4vw,4rem);font-weight:900;color:var(--yel);line-height:1;text-transform:uppercase;letter-spacing:.02em}
+.wsl{font-family:var(--fm);font-size:.42rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-top:5px}
+.stream-list{display:flex;flex-direction:column;gap:1px;margin-top:20px}
+.sl{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--blk2);border:1px solid var(--line);border-left:3px solid transparent;transition:all var(--r);cursor:default}
+.sl:hover{border-left-color:var(--yel);background:var(--yel-dim)}
+.sl-num{font-family:var(--fm);font-size:.44rem;letter-spacing:.1em;color:var(--grey);flex-shrink:0;width:24px}
+.sl-title{font-family:var(--fs);font-size:.88rem;font-weight:700;color:var(--wht);flex:1}
+.sl-val{font-family:var(--fm);font-size:.46rem;letter-spacing:.1em;text-transform:uppercase;color:var(--yel)}
+.pq{font-family:var(--fd);font-size:clamp(1.2rem,2.5vw,2rem);font-weight:600;color:var(--blk);line-height:1.4;padding-left:20px;border-left:4px solid var(--yel);margin:16px 0;text-transform:uppercase;letter-spacing:.02em}
+.pq em{color:var(--yel3);font-style:normal}
+@media(max-width:900px){.what-grid{grid-template-columns:1fr}.what-left,.what-right{padding:60px 24px}}
+
+/* ══════════════════════════════════════
+   Q2 — HOW DID YOU GET HERE?
+══════════════════════════════════════ */
+#q2{background:var(--blk2)}
+.ori-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:80px;align-items:start}
+.timeline{display:flex;flex-direction:column;position:relative}
+.timeline::before{content:'';position:absolute;left:22px;top:6px;bottom:6px;width:2px;background:linear-gradient(to bottom,var(--yel),var(--blk5))}
+.tl{display:flex;gap:18px;padding:14px 0;transition:background var(--r)}
+.tl:hover{background:var(--yel-dim)}
+.tl-yr{font-family:var(--fm);font-size:.44rem;letter-spacing:.1em;color:var(--yel);flex-shrink:0;width:44px;text-transform:uppercase;padding-top:4px}
+.tl-dot{width:10px;height:10px;background:var(--blk2);border:2px solid var(--yel);flex-shrink:0;margin-top:4px;transition:all var(--r)}
+.tl:hover .tl-dot{background:var(--yel)}
+.tl-h{font-family:var(--fs);font-size:.88rem;font-weight:700;color:var(--wht);line-height:1.3}
+.tl-b{font-family:var(--fs);font-size:.78rem;color:var(--wht3);line-height:1.9;margin-top:3px}
+.tl-b strong{color:var(--wht)}
+.tl-b em{color:var(--yel);font-style:italic}
+.ori-right{display:flex;flex-direction:column;gap:20px}
+.big-num{font-family:var(--fd);font-size:clamp(5rem,12vw,14rem);font-weight:900;color:rgba(255,212,0,.06);line-height:1;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:-20px;user-select:none}
+@media(max-width:900px){.ori-grid{grid-template-columns:1fr;gap:40px}}
+
+/* ══════════════════════════════════════
+   Q3 — WHO'S BEHIND THE MIC?
+══════════════════════════════════════ */
+#q3{background:var(--blk)}
+.founders-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:48px}
+.fc{background:var(--blk2);padding:0;border:1px solid var(--line);overflow:hidden;transition:all var(--r);cursor:default;position:relative}
+.fc:hover{border-color:rgba(255,212,0,.3);transform:translateY(-4px);box-shadow:0 10px 36px rgba(255,212,0,.08)}
+.fc-img{width:100%;aspect-ratio:3/4;overflow:hidden;position:relative;background:var(--blk3)}
+.fc-img img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;filter:grayscale(.6) contrast(1.1) brightness(.85);transition:filter .4s,transform .6s}
+.fc:hover .fc-img img{filter:grayscale(.2) contrast(1.05) brightness(.95);transform:scale(1.04)}
+/* YouTube thumbnail fallback */
+.fc-img-fallback{width:100%;aspect-ratio:3/4;background:var(--blk3);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:clamp(4rem,8vw,6rem);font-weight:900;color:var(--yel);text-transform:uppercase;letter-spacing:.04em;opacity:.5}
+.fc-yel-bar{position:absolute;top:0;left:0;right:0;height:4px;background:var(--yel)}
+.fc-info{padding:24px 22px 28px}
+.fc-role{font-family:var(--fm);font-size:.44rem;letter-spacing:.16em;text-transform:uppercase;color:var(--yel);margin-bottom:6px}
+.fc-name{font-family:var(--fd);font-size:clamp(1.5rem,3vw,2.5rem);font-weight:800;color:var(--wht);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;line-height:.9}
+.fc-tag{font-family:var(--fm);font-size:.44rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);margin-bottom:12px}
+.fc-b{font-family:var(--fs);font-size:.78rem;color:var(--wht3);line-height:1.9}
+.fc-b strong{color:var(--wht)}
+@media(max-width:900px){.founders-grid{grid-template-columns:1fr}}
+
+/* ══════════════════════════════════════
+   Q4 — WHAT'S THE ACTUAL NUMBER?
+══════════════════════════════════════ */
+#q4{background:var(--yel);color:var(--blk)}
+.nums-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:40px}
+.nc{background:rgba(8,8,8,.07);padding:32px 24px;border:1px solid rgba(8,8,8,.1);cursor:default;transition:background var(--r)}
+.nc:hover{background:rgba(8,8,8,.15)}
+.nc-v{font-family:var(--fd);font-size:clamp(2.5rem,5vw,6rem);font-weight:900;color:var(--blk);line-height:1;text-transform:uppercase;letter-spacing:.02em}
+.nc-l{font-family:var(--fm);font-size:.46rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(8,8,8,.5);margin-top:8px}
+.nc-b{font-family:var(--fs);font-size:.78rem;color:rgba(8,8,8,.6);line-height:1.85;margin-top:6px}
+.nc-b strong{color:var(--blk)}
+.revenue-bar{background:var(--blk);padding:24px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-top:1px}
+.rb-text{font-family:var(--fd);font-size:clamp(1.2rem,2.5vw,2rem);font-weight:800;color:var(--yel);text-transform:uppercase;letter-spacing:.04em}
+.rb-text em{font-style:normal;font-weight:300;font-size:.65em;color:var(--wht3);letter-spacing:.06em}
+.rb-note{font-family:var(--fs);font-size:.82rem;color:var(--wht3)}
+.rb-note strong{color:var(--wht)}
+@media(max-width:1100px){.nums-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.nums-grid{grid-template-columns:1fr}}
+
+/* ══════════════════════════════════════
+   Q5 — WHO HAVE YOU INTERVIEWED?
+══════════════════════════════════════ */
+#q5{background:var(--blk3)}
+.vid-intro{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:40px}
+.vid-grid-main{display:grid;grid-template-columns:repeat(3,1fr);gap:1px}
+.vid-row2,.vid-row3{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:1px}
+.vc{background:var(--blk2);border:1px solid var(--line);overflow:hidden;text-decoration:none;display:block;transition:all var(--r);cursor:none}
+.vc:hover{border-color:rgba(255,212,0,.3);transform:translateY(-3px);box-shadow:0 8px 28px rgba(255,212,0,.1)}
+.vc-thumb{position:relative;aspect-ratio:16/9;overflow:hidden}
+.vc-thumb img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.6) contrast(1.15) saturate(.7);transition:filter .4s,transform .6s}
+.vc:hover .vc-thumb img{filter:brightness(.8) contrast(1.06) saturate(.88);transform:scale(1.04)}
+.vc-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.vc-btn{width:40px;height:40px;background:rgba(8,8,8,.65);border:2px solid var(--yel);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:all var(--r)}
+.vc-btn::after{content:'';border-left:11px solid var(--yel);border-top:6.5px solid transparent;border-bottom:6.5px solid transparent;margin-left:3px}
+.vc:hover .vc-btn{background:rgba(255,212,0,.15)}
+.vc-badge{position:absolute;top:8px;left:8px;background:var(--yel);padding:3px 8px;font-family:var(--fm);font-size:.4rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blk);font-weight:700}
+.vc-badge-blk{background:var(--blk)!important;color:var(--yel)!important;border:1px solid var(--yel)!important}
+.vc-info{padding:13px 13px 16px}
+.vc-cat{font-family:var(--fm);font-size:.4rem;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);margin-bottom:4px}
+.vc-title{font-family:var(--fs);font-size:.88rem;font-weight:700;color:var(--wht);line-height:1.3;margin-bottom:3px}
+.vc-desc{font-family:var(--fs);font-size:.72rem;color:var(--wht3);line-height:1.85}
+.vc-desc strong{color:var(--wht)}
+@media(max-width:900px){.vid-intro{grid-template-columns:1fr;gap:24px}.vid-grid-main{grid-template-columns:1fr}.vid-row2,.vid-row3{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.vid-row2,.vid-row3{grid-template-columns:1fr}}
+
+/* ══════════════════════════════════════
+   INTERVIEW NAMES — THE WALL
+══════════════════════════════════════ */
+#wall{background:var(--blk2);padding:80px 0;overflow:hidden}
+.wall-h{max-width:var(--sw);margin:0 auto 36px;padding:0 48px;display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:16px}
+.name-rows{display:flex;flex-direction:column;gap:0}
+.name-row{overflow:hidden;position:relative;border-bottom:1px solid var(--line)}
+.name-row::before,.name-row::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:3;pointer-events:none}
+.name-row::before{left:0;background:linear-gradient(to right,var(--blk2),transparent)}
+.name-row::after{right:0;background:linear-gradient(to left,var(--blk2),transparent)}
+.nt-a{display:flex;gap:0;width:max-content;animation:tScr 30s linear infinite}
+.nt-b{display:flex;gap:0;width:max-content;animation:tScr 24s linear infinite reverse}
+.name-row:hover .nt-a,.name-row:hover .nt-b{animation-play-state:paused}
+.ni{font-family:var(--fd);font-size:clamp(1.4rem,3vw,2.5rem);font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--grey);padding:16px 28px;white-space:nowrap;border-right:1px solid var(--line);transition:color var(--r),background var(--r);cursor:default}
+.ni:hover{color:var(--yel);background:var(--yel-dim)}
+.ni.hi{color:var(--wht3)}
+@media(max-width:600px){.wall-h{padding:0 24px}}
+
+/* ══════════════════════════════════════
+   Q6 — WHAT'S THE BUSINESS MODEL?
+══════════════════════════════════════ */
+#q6{background:var(--blk)}
+.biz-intro{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:40px}
+.biz-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px}
+.bc{background:var(--blk2);padding:26px 20px;border:1px solid var(--line);border-top:3px solid transparent;transition:all var(--r);cursor:default;position:relative}
+.bc:hover{border-top-color:var(--yel);background:var(--yel-dim)}
+.bc-icon{font-size:1.4rem;display:block;margin-bottom:12px}
+.bc-n{font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--wht);text-transform:uppercase;letter-spacing:.04em;margin-bottom:7px;line-height:1.2}
+.bc-b{font-family:var(--fs);font-size:.78rem;color:var(--wht3);line-height:1.85}
+.bc-b strong{color:var(--wht)}
+.bc-val{font-family:var(--fm);font-size:.46rem;letter-spacing:.1em;text-transform:uppercase;color:var(--yel);margin-top:10px}
+/* The gap section — the pitch */
+.gap-bar{background:var(--yel);padding:28px 32px;margin-top:1px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px}
+.gap-q{font-family:var(--fd);font-size:clamp(1.2rem,2.5vw,2rem);font-weight:900;color:var(--blk);text-transform:uppercase;letter-spacing:.04em;line-height:1}
+.gap-a{font-family:var(--fs);font-size:.84rem;color:rgba(8,8,8,.6)}
+.gap-a strong{color:var(--blk)}
+@media(max-width:1100px){.biz-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){.biz-intro{grid-template-columns:1fr;gap:24px}.gap-bar{grid-template-columns:1fr}}
+@media(max-width:480px){.biz-grid{grid-template-columns:1fr}}
+
+/* ══════════════════════════════════════
+   PRESS / SOCIAL PROOF
+══════════════════════════════════════ */
+#press{background:var(--blk2)}
+.plscroll{overflow:hidden;position:relative;margin:28px 0}
+.plscroll::before,.plscroll::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
+.plscroll::before{left:0;background:linear-gradient(to right,var(--blk2),transparent)}
+.plscroll::after{right:0;background:linear-gradient(to left,var(--blk2),transparent)}
+.pltrack{display:flex;gap:1px;width:max-content;animation:plScr 25s linear infinite}
+@keyframes plScr{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.pllogo{flex:0 0 150px;height:52px;background:var(--blk3);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--grey);transition:all var(--r);cursor:default}
+.pllogo:hover{background:var(--yel-dim);color:var(--yel)}
+.pcards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px}
+.pcard{background:var(--blk3);padding:26px 22px;border:1px solid var(--line);border-left:3px solid transparent;transition:all var(--r);cursor:default}
+.pcard:hover{border-left-color:var(--yel);background:var(--yel-dim)}
+.ppub{font-family:var(--fm);font-size:.44rem;letter-spacing:.14em;text-transform:uppercase;color:var(--yel);margin-bottom:9px}
+.phl{font-family:var(--fs);font-size:.94rem;font-weight:700;color:var(--wht);line-height:1.4;margin-bottom:8px}
+.pbdy{font-family:var(--fs);font-size:.78rem;color:var(--wht3);line-height:1.9}
+.pbdy strong{color:var(--wht)}
+@media(max-width:900px){.pcards{grid-template-columns:1fr}}
+
+/* ══════════════════════════════════════
+   Q7 — HOW DO WE WORK TOGETHER?
+══════════════════════════════════════ */
+#partner{background:var(--wht);color:var(--blk);padding:0}
+.psplit{display:grid;grid-template-columns:1fr 1fr}
+.pleft{padding:100px 60px 100px 48px;background:var(--wht);position:relative}
+.pleft::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--yel)}
+.pright{padding:100px 48px 100px 60px;background:var(--blk);border-left:1px solid var(--yel)}
+.pform{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+.pflbl{font-family:var(--fm);font-size:.46rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(8,8,8,.4)}
+.pflbl-iv{font-family:var(--fm);font-size:.46rem;letter-spacing:.14em;text-transform:uppercase;color:var(--grey)}
+.pfinp{background:var(--wht);border:2px solid rgba(8,8,8,.12);padding:11px 14px;font-family:var(--fs);font-size:.88rem;color:var(--blk);outline:none;width:100%;transition:border-color var(--r)}
+.pfinp:focus{border-color:var(--yel)}
+.pfinp::placeholder{color:rgba(8,8,8,.3)}
+.pfinp-iv{background:rgba(255,255,255,.05);border:2px solid var(--line2);padding:11px 14px;font-family:var(--fs);font-size:.82rem;color:rgba(255,255,255,.85);outline:none;width:100%;transition:border-color var(--r)}
+.pfinp-iv:focus{border-color:var(--yel)}
+.pfinp-iv::placeholder{color:var(--grey)}
+textarea.pfinp,textarea.pfinp-iv{resize:vertical;min-height:88px}
+.contact-list{display:flex;flex-direction:column;gap:16px;margin-top:28px}
+.ci{padding-bottom:14px;border-bottom:1px solid var(--line)}
+.ci:last-child{border-bottom:none}
+.cil{font-family:var(--fm);font-size:.44rem;letter-spacing:.14em;text-transform:uppercase;color:var(--yel);margin-bottom:5px}
+.civ{font-family:var(--fd);font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--wht)}
+.cis{font-family:var(--fs);font-size:.78rem;color:var(--wht3);margin-top:3px;line-height:1.8}
+@media(max-width:900px){.psplit{grid-template-columns:1fr}.pleft,.pright{padding:70px 32px}}
+
+/* FOOTER */
+footer{background:var(--blk2);border-top:2px solid var(--yel);padding:52px 48px 28px}
+.fi{max-width:var(--sw);margin:0 auto}
+.ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;padding-bottom:36px;border-bottom:1px solid var(--line);margin-bottom:24px}
+.flogo{font-family:var(--fd);font-size:1.6rem;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:var(--wht);margin-bottom:10px}
+.flogo span{color:var(--yel)}
+.fdesc{font-family:var(--fs);font-size:.78rem;color:var(--grey);line-height:1.9}
+.fcolh{font-family:var(--fm);font-size:.44rem;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);margin-bottom:12px}
+.fcol a{display:block;font-family:var(--fs);font-size:.88rem;font-weight:400;color:var(--grey);text-decoration:none;margin-bottom:7px;transition:color var(--r)}
+.fcol a:hover{color:var(--yel)}
+.fbot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.fcopy,.fkuro{font-family:var(--fm);font-size:.44rem;letter-spacing:.1em;color:var(--grey)}
+.fkuro{text-decoration:none;text-transform:uppercase;transition:color var(--r)}
+.fkuro:hover{color:var(--yel)}
+@media(max-width:900px){.ftop{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ftop{grid-template-columns:1fr}.fbot{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<div id="cur"></div><div id="cur-r"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ll">// loading school_of_hard_knocks.hq</div>
+  <div class="ll">Founded 2021 · James · Jack · Joshua · Atlanta</div>
+  <div class="ll">20M+ followers · $500K+/month · 4–5B views</div>
+  <div class="ll-q">Excuse me — <em>"how did you build this?"</em></div>
+  <div class="ll-name">HARD <span>KNOCKS</span></div>
+  <div class="lbar"><div class="lbar-f" id="lf"></div></div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nl">HARD <span>KNOCKS</span></a>
+  <ul class="nls">
+    <li><a href="#q1">The Business</a></li>
+    <li><a href="#q2">The Origin</a></li>
+    <li><a href="#q3">The Founders</a></li>
+    <li><a href="#q4">The Numbers</a></li>
+    <li><a href="#q5">The Interviews</a></li>
+    <li><a href="#q6">Work Together</a></li>
+  </ul>
+  <a href="#partner" class="ncta">Contact</a>
+  <button class="ham" id="hbtn"><span></span><span></span><span></span></button>
+</nav>
+<div id="mob">
+  <a href="#q1"     onclick="document.getElementById('mob').classList.remove('open')">The Business</a>
+  <a href="#q2"     onclick="document.getElementById('mob').classList.remove('open')">The Origin</a>
+  <a href="#q3"     onclick="document.getElementById('mob').classList.remove('open')">The Founders</a>
+  <a href="#q4"     onclick="document.getElementById('mob').classList.remove('open')">The Numbers</a>
+  <a href="#q5"     onclick="document.getElementById('mob').classList.remove('open')">Interviews</a>
+  <a href="#partner"onclick="document.getElementById('mob').classList.remove('open')">Contact ↗</a>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section id="hero">
+  <div class="hero-bg">
+    <img src="https://img.youtube.com/vi/GCXhTFKVHkg/maxresdefault.jpg" alt="School of Hard Knocks"
+      onerror="this.style.display='none'"/>
+  </div>
+  <div class="hero-mic"></div>
+  <div class="hero-logo-badge">
+    <img class="hlb-img"
+      src="https://yt3.googleusercontent.com/R2j_9P-S2_1uCfAvnUe2jAXI-OkSNiZ-oxgJmVN-Hh04G-uUqa5kULXWoWOp9OJnLBdn0RJ-=s160-c-k-c0x00ffffff-no-rj"
+      alt="School of Hard Knocks" onerror="this.style.display='none'"/>
+    <span class="hlb-sub">@theschoolofhardknockz</span>
+  </div>
+  <div class="hero-main">
+    <p class="hero-hook">"Excuse me sir — <em>how did you become successful?"</em></p>
+    <h1 class="hero-h1">THE<br/>SCHOOL OF<br/><em>HARD KNOCKS.</em></h1>
+    <p class="hero-tagline">
+      One mic. One sidewalk. One question. <strong>20 million people watching.</strong> James Dumoulin and his co-founders turned cold approaches into a multi-million dollar media machine — interviewing over 1,000 millionaires and 15 billionaires in 4 years. <strong>This is the Bloomberg of street entrepreneurship.</strong>
+    </p>
+    <div class="hero-btns">
+      <a href="#q5"     class="bt-ghost">Watch the Interviews</a>
+      <a href="#partner" class="bt-yel">Work Together</a>
+    </div>
+  </div>
+  <div class="hero-stats rv">
+    <div class="hst"><div class="hstv">20<em>M+</em></div><div class="hstl">Total Audience Across All Platforms</div></div>
+    <div class="hst"><div class="hstv">$<em>500K+</em></div><div class="hstl">Monthly Revenue — Every Month in 2025</div></div>
+    <div class="hst"><div class="hstv">1,<em>000+</em></div><div class="hstl">Millionaires Interviewed · 15 Billionaires</div></div>
+    <div class="hst"><div class="hstv">4–5<em>B</em></div><div class="hstl">Total Views Across Platforms · 4 Years</div></div>
+    <div class="hst"><div class="hstv">$<em>30-50K</em></div><div class="hstl">Speaking Fee per Keynote · Gotham Artists</div></div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ttrack">
+    <span class="ti">Founded 2021 · James · Jack · Joshua<span class="tsep">◆</span></span>
+    <span class="ti">1.97M YouTube · 9M Instagram · 5.4M TikTok · 4.8M Facebook<span class="tsep">◆</span></span>
+    <span class="ti">$500K+/month in 2025 · First $100K month: 2024<span class="tsep">◆</span></span>
+    <span class="ti">Mark Cuban · Will Smith · Gary Vee · Kendra Scott · Elliot Hill (Nike President)<span class="tsep">◆</span></span>
+    <span class="ti">Tom Cruise requested an interview · 1,000+ millionaires · 15 billionaires<span class="tsep">◆</span></span>
+    <span class="ti">Hard Knocks Women · Hard Knocks Business · School of Mentors (6,000+ members)<span class="tsep">◆</span></span>
+    <span class="ti">Content Agency · High-Ticket Consulting · Keynote Speaking · Beehiiv Newsletter<span class="tsep">◆</span></span>
+    <span class="ti">Fox & Friends October 2025 · VUE Magazine Dec 2025 · Roe Magazine Jan 2026<span class="tsep">◆</span></span>
+    <span class="ti">9-figure media ecosystem target · Jack Dumoulin · Former Microsoft Excel World Champion<span class="tsep">◆</span></span>
+    <span class="ti">Founded 2021 · James · Jack · Joshua<span class="tsep">◆</span></span>
+    <span class="ti">1.97M YouTube · 9M Instagram · 5.4M TikTok · 4.8M Facebook<span class="tsep">◆</span></span>
+    <span class="ti">$500K+/month in 2025 · First $100K month: 2024<span class="tsep">◆</span></span>
+    <span class="ti">Mark Cuban · Will Smith · Gary Vee · Kendra Scott · Elliot Hill (Nike President)<span class="tsep">◆</span></span>
+    <span class="ti">Tom Cruise requested an interview · 1,000+ millionaires · 15 billionaires<span class="tsep">◆</span></span>
+    <span class="ti">Hard Knocks Women · Hard Knocks Business · School of Mentors (6,000+ members)<span class="tsep">◆</span></span>
+    <span class="ti">Content Agency · High-Ticket Consulting · Keynote Speaking · Beehiiv Newsletter<span class="tsep">◆</span></span>
+  </div>
+</div>
+
+<!-- ═══════════ Q1 — WHAT DO YOU DO? ═══════════ -->
+<section id="q1" style="padding:0">
+  <div class="what-grid">
+    <div class="what-left rvl">
+      <div class="iq" style="color:var(--grey);margin-bottom:14px"><span style="margin-left:8px">Q: "What do you actually do for a living?"</span></div>
+      <h2 class="ttsm" style="margin-bottom:24px">The media empire<br/>disguised as a<br/><em>YouTube channel.</em></h2>
+      <p class="bb" style="margin-bottom:28px">They don't produce content. They produce <strong>access.</strong> The content is the acquisition layer. The real business is below the surface — a six-revenue-stream machine that converts street-corner attention into subscriptions, sponsorships, agency contracts, consulting fees, speaking gigs, and a 6,000-member community.</p>
+      <div class="what-stat-row">
+        <div class="ws"><div class="wsv">$500K<span style="font-size:.55em;color:var(--wht3)">/mo</span></div><div class="wsl">Revenue confirmed by James 2025</div></div>
+        <div class="ws"><div class="wsv">4.8B</div><div class="wsl">Total views across platforms</div></div>
+        <div class="ws"><div class="wsv">6,000+</div><div class="wsl">School of Mentors community members</div></div>
+        <div class="ws"><div class="wsv">$30-50K</div><div class="wsl">Speaking fee per appearance</div></div>
+      </div>
+      <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
+        <a href="#q4" class="bt-yel">See the Numbers →</a>
+        <a href="#q6" class="bt-ghost">The Revenue Model →</a>
+      </div>
+    </div>
+    <div class="what-right rvr">
+      <div class="iq iq-lt" style="margin-bottom:14px"><span style="margin-left:8px">A: "We interview millionaires — and that's the smallest part."</span></div>
+      <h2 class="ttsm ttsm-dk" style="margin-bottom:24px">6 revenue<br/>streams. <em>One hook.</em></h2>
+      <div class="stream-list">
+        <div class="sl"><div class="sl-num">01</div><div class="sl-title">Platform Ad Revenue</div><div class="sl-val">~$7–10K/mo · Smallest stream</div></div>
+        <div class="sl"><div class="sl-num">02</div><div class="sl-title">Brand Sponsorships</div><div class="sl-val">Finance CPM = High · $50–200K/mo</div></div>
+        <div class="sl"><div class="sl-num">03</div><div class="sl-title">School of Mentors Community</div><div class="sl-val">6,000+ members · Skool platform</div></div>
+        <div class="sl"><div class="sl-num">04</div><div class="sl-title">Content Marketing Agency</div><div class="sl-val">B2B · Viral content for brands</div></div>
+        <div class="sl"><div class="sl-num">05</div><div class="sl-title">High-Ticket Consulting</div><div class="sl-val">Replication consulting · $50–100K/mo</div></div>
+        <div class="sl"><div class="sl-num">06</div><div class="sl-title">Keynote Speaking</div><div class="sl-val">$30,000–$50,000 per appearance</div></div>
+      </div>
+      <div class="pq" style="margin-top:24px">"The best entrepreneurs look at all the different ways they could be making money <em>off their core business.</em>"<br/><span style="font-size:.7em;color:rgba(8,8,8,.35);font-weight:400;letter-spacing:.04em">— James Dumoulin, VUE Magazine Dec 2025</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ Q2 — HOW DID YOU GET HERE? ═══════════ -->
+<section id="q2" class="sec sec-blk2">
+  <div class="sw">
+    <div class="ori-grid">
+      <div class="rvl">
+        <div class="iq" style="margin-bottom:14px"><span style="margin-left:8px">Q: "How did you actually get here?"</span></div>
+        <h2 class="tt" style="margin-bottom:32px">From 25K<br/>to <em>20 million.</em></h2>
+        <div class="timeline">
+          <div class="tl"><div class="tl-yr">2021</div><div class="tl-dot"></div><div><div class="tl-h">Three friends launch a business advice channel</div><div class="tl-b">James, Jack, and Joshua start posting. 25,000 followers. Kids giving business advice. <em>Nobody cares.</em> The first version fails and they know it within months.</div></div></div>
+          <div class="tl"><div class="tl-yr">2021</div><div class="tl-dot"></div><div><div class="tl-h">The Pivot — go find the experts</div><div class="tl-b">"We figured that most people don't give a shit about 20-year-old kids giving business advice. We went to find those industry experts that have 20, 30, 40, 50 years of experience." <strong>They take the classroom to the streets.</strong></div></div></div>
+          <div class="tl"><div class="tl-yr">2022</div><div class="tl-dot"></div><div><div class="tl-h">Mark Cuban — the pivotal interview</div><div class="tl-b">Cold-approached Mark Cuban after a South by Southwest event. He stops. He talks. The video performs. <strong>"If Mark Cuban is stopping to do an interview with us, why can't we get everybody else?"</strong> Confidence: confirmed. The race begins.</div></div></div>
+          <div class="tl"><div class="tl-yr">2023</div><div class="tl-dot"></div><div><div class="tl-h">Scale — posting relentlessly · travelling everywhere</div><div class="tl-b">James publishes up to 3 times a day in the early phase. The team is relentlessly travelling to get interviews. <strong>Every day. Every city. Every sidewalk.</strong> The format finds its rhythm. TikTok, Instagram, YouTube all growing simultaneously.</div></div></div>
+          <div class="tl"><div class="tl-yr">2024</div><div class="tl-dot"></div><div><div class="tl-h">First $100K month · School of Mentors launches</div><div class="tl-b">June 2024: School of Mentors community launched on Skool. Now 6,000+ members. <strong>First $100K month arrives.</strong> 3 years of showing up before the first six-figure month. "Consistency is everything." The content agency launches. The consulting practice launches.</div></div></div>
+          <div class="tl"><div class="tl-yr">2025</div><div class="tl-dot"></div><div><div class="tl-h">$500K+ every month · Tom Cruise · Fox & Friends · 20M total</div><div class="tl-b"><strong>Every single month in 2025 has exceeded $500,000 in revenue.</strong> Tom Cruise requests an interview. All three founders appear on Fox & Friends October 2025. Hard Knocks Women and Hard Knocks Business sub-channels launch. VUE Magazine. Roe Magazine. Target: 9-figure media ecosystem.</div></div></div>
+        </div>
+      </div>
+      <div class="ori-right rvr" style="gap:16px">
+        <div class="big-num">4B+</div>
+        <div class="iq" style="margin-bottom:8px"><span style="margin-left:8px">A: "We were rejected 10–15 times a day. We never stopped."</span></div>
+        <h3 class="ttsm" style="margin-bottom:14px">The formula<br/>that never<br/><em>changes.</em></h3>
+        <p class="bb" style="margin-bottom:24px">The psychological hook is permanent: <strong>authority proximity + curiosity gap + fast-value delivery + relatability.</strong> A random person on a street. A millionaire stops. 60 seconds. Life advice that most people spend $200,000 on a degree not to receive. The format is a machine. It doesn't stop working.</p>
+        <div style="display:flex;flex-direction:column;gap:1px">
+          <div style="background:var(--blk3);border:1px solid var(--line);border-left:3px solid var(--yel);padding:16px 18px"><div style="font-family:var(--fm);font-size:.44rem;letter-spacing:.14em;text-transform:uppercase;color:var(--yel);margin-bottom:5px">The Format</div><div style="font-family:var(--fs);font-size:.84rem;color:var(--wht)"><strong>1.</strong> Short clip (TikTok/Shorts) → viral hook <strong>2.</strong> Long-form YouTube → deep value <strong>3.</strong> Community (Skool) → ongoing access <strong>4.</strong> Agency + Consulting → B2B revenue</div></div>
+          <div style="background:var(--blk3);border:1px solid var(--line);border-left:3px solid var(--yel);padding:16px 18px"><div style="font-family:var(--fm);font-size:.44rem;letter-spacing:.14em;text-transform:uppercase;color:var(--yel);margin-bottom:5px">The Daily Discipline</div><div style="font-family:var(--fs);font-size:.84rem;color:var(--wht)">"Going viral is like hitting the lottery, but creating consistent content is like <strong>investing in your future.</strong>" 3 posts/day in the early phase. Never stopped. The compound interest of content.</div></div>
+          <div style="background:var(--blk3);border:1px solid var(--line);border-left:3px solid var(--yel);padding:16px 18px"><div style="font-family:var(--fm);font-size:.44rem;letter-spacing:.14em;text-transform:uppercase;color:var(--yel);margin-bottom:5px">The Expansion</div><div style="font-family:var(--fs);font-size:.84rem;color:var(--wht)">Main channel → <strong>Hard Knocks Women</strong> → <strong>Hard Knocks Business</strong> → Beehiiv newsletter → Agency → Community → Speaking. Each new arm feeds the others.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ Q3 — WHO'S BEHIND THE MIC? ═══════════ -->
+<section id="q3" class="sec sec-blk">
+  <div class="sw">
+    <div class="rv" style="margin-bottom:8px">
+      <div class="iq" style="margin-bottom:14px"><span style="margin-left:8px">Q: "Who's actually running this thing?"</span></div>
+      <div class="g2" style="align-items:end">
+        <h2 class="tt">Three founders.<br/><em>One mission.</em></h2>
+        <p class="bb">Tom Cruise requested an interview with James. Jack was a Microsoft Excel World Champion before he built a 9-figure media ecosystem. Josh generated 4 billion organic views before most people had heard of the brand. Three people. One format. The system builds itself.</p>
+      </div>
+    </div>
+    <div class="founders-grid rv">
+      <!-- James -->
+      <div class="fc">
+        <div class="fc-img">
+          <img src="https://img.youtube.com/vi/GCXhTFKVHkg/maxresdefault.jpg"
+            alt="James Dumoulin"
+            onerror="this.style.display='none';this.parentElement.querySelector('.fc-img-fallback').style.display='flex'"/>
+          <div class="fc-img-fallback" style="display:none">JD</div>
+          <div class="fc-yel-bar"></div>
+        </div>
+        <div class="fc-info">
+          <div class="fc-role">Co-Founder · On-Camera Host</div>
+          <div class="fc-name">James<br/>Dumoulin</div>
+          <div class="fc-tag">The Face · The Voice · The Hook</div>
+          <p class="fc-b">The man on the sidewalk. <strong>20M+ follower ecosystem across his platforms.</strong> Keynote speaker at $30–50K per appearance. Tom Cruise requested an interview from him. Was rejected 10–15 times daily when he started. Never stopped. "No doesn't mean never — it means not yet." VUE Magazine, Roe Magazine, Fox & Friends.</p>
+        </div>
+      </div>
+      <!-- Jack -->
+      <div class="fc">
+        <div class="fc-img">
+          <img src="https://img.youtube.com/vi/5E-lydM23gU/maxresdefault.jpg"
+            alt="Jack Dumoulin"
+            onerror="this.style.display='none';this.parentElement.querySelector('.fc-img-fallback').style.display='flex'"/>
+          <div class="fc-img-fallback" style="display:none">JD</div>
+          <div class="fc-yel-bar"></div>
+        </div>
+        <div class="fc-info">
+          <div class="fc-role">Co-Founder · Operations · Strategy</div>
+          <div class="fc-name">Jack<br/>Dumoulin</div>
+          <div class="fc-tag">The System · The Builder · The Backend</div>
+          <p class="fc-b">Former <strong>Microsoft Excel World Champion</strong> (verified). Now runs the operational backbone of a company targeting a 9-figure media ecosystem. Manages Hard Knocks Women sub-channel. "From monetization and operations to community building and scaling ventures — Jack drives the backend growth." He's the reason the system works at scale.</p>
+        </div>
+      </div>
+      <!-- Josh -->
+      <div class="fc">
+        <div class="fc-img">
+          <img src="https://img.youtube.com/vi/2Q2JgVDvHV0/maxresdefault.jpg"
+            alt="Joshua Smith"
+            onerror="this.style.display='none';this.parentElement.querySelector('.fc-img-fallback').style.display='flex'"/>
+          <div class="fc-img-fallback" style="display:none">JS</div>
+          <div class="fc-yel-bar"></div>
+        </div>
+        <div class="fc-info">
+          <div class="fc-role">Co-Founder · Content Strategy · Growth</div>
+          <div class="fc-name">Joshua<br/>Smith</div>
+          <div class="fc-tag">The Algorithm · The Strategist</div>
+          <p class="fc-b">Former ad specialist with <strong>$500K+ in ad spend experience.</strong> Generated <strong>4+ billion organic views</strong> across the brand's platforms. He is the algorithm whisperer — the reason the content doesn't just go viral once but consistently. Platform-native mastery. "Josh leads The School of Hard Knocks' content strategy." He is the growth engine.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ Q4 — THE ACTUAL NUMBERS ═══════════ -->
+<section id="q4" class="sec" style="background:var(--yel);padding-bottom:0">
+  <div class="sw">
+    <div class="rv" style="margin-bottom:8px">
+      <div class="iq iq-lt" style="margin-bottom:12px"><span style="margin-left:8px">Q: "What's the number that changed everything?"</span></div>
+      <div class="g2" style="align-items:end">
+        <h2 class="tt tt-dk">The numbers<br/>are real.</h2>
+        <p class="bb-dk">"I've been asked about the money enough times that I'll just say it clearly: <strong>every single month this year has exceeded half a million dollars in revenue.</strong> Those numbers didn't come from hacking an algorithm — they came from three years of showing up when almost nobody was paying attention." — James Dumoulin, Roe Magazine 2026</p>
+      </div>
+    </div>
+    <div class="nums-grid rv">
+      <div class="nc"><div class="nc-v">20M+</div><div class="nc-l">Total Cross-Platform Audience</div><div class="nc-b"><strong>9M Instagram</strong> · 5.4M TikTok · 4.8M Facebook · 1.97M YouTube. Your brief said 7M. The real number is 20M. The difference matters for pricing every single partnership conversation.</div></div>
+      <div class="nc"><div class="nc-v">$500K+</div><div class="nc-l">Monthly Revenue · Every Month 2025</div><div class="nc-b">Self-disclosed by James on-camera. <strong>First $100K month arrived in 2024.</strong> Every month in 2025 exceeds $500K. The trajectory: 3 years to $100K month, then acceleration. Annual run-rate: $6M+.</div></div>
+      <div class="nc"><div class="nc-v">1,015+</div><div class="nc-l">Millionaires + Billionaires Interviewed</div><div class="nc-b">Over 1,000 millionaires and <strong>15 billionaires.</strong> Will Smith. Mark Cuban. Gary Vee. Kendra Scott. Elliot Hill (former Nike President). Dave Bautista. Adinross. The interview list is a who's who of American wealth.</div></div>
+      <div class="nc"><div class="nc-v">4–5B</div><div class="nc-l">Total Views · All Platforms · 4 Years</div><div class="nc-b"><strong>4 to 5 billion views</strong> across TikTok, YouTube, Instagram, Facebook since 2021. Joshua Smith's content strategy generated these organically. Zero paid acquisition. The format, the consistency, the algorithm mastery.</div></div>
+      <div class="nc"><div class="nc-v">6,000+</div><div class="nc-l">School of Mentors Community Members</div><div class="nc-b">Launched June 2024 on Skool. <strong>6,000+ paying members and growing</strong> within the first year. The community pays for live calls with the millionaires and billionaires they interview. The content funnel works exactly as designed.</div></div>
+      <div class="nc"><div class="nc-v">$30K</div><div class="nc-l">Minimum Speaking Fee per Appearance</div><div class="nc-b"><strong>$30,000–$50,000 per keynote.</strong> Listed with Gotham Artists. Building Bridges Summit. Virtual and in-person. The keynote topics: Patterns of Success, The Attention Economy, The Art of the Question, Viral by Design.</div></div>
+      <div class="nc"><div class="nc-v">5</div><div class="nc-l">Active Revenue Businesses in the Ecosystem</div><div class="nc-b">Main channel · Hard Knocks Women · Hard Knocks Business · School of Mentors · Content Agency · Consulting · Speaking. <strong>7 distinct revenue streams</strong> from one format.</div></div>
+      <div class="nc"><div class="nc-v">Fox</div><div class="nc-l">National TV · October 2025 · Fox & Friends</div><div class="nc-b">All three founders on Fox & Friends October 2025. VUE Magazine December 2025. Roe Magazine January 2026. <strong>The press coverage is accelerating.</strong> Forbes hasn't covered them yet. That's the next unlock.</div></div>
+    </div>
+    <div class="revenue-bar rv">
+      <div class="rb-text">Every Month 2025 <em>·</em> $500,000+ <em>·</em> Confirmed on Camera</div>
+      <p class="rb-note">James Dumoulin, on-camera disclosure, 2025. <strong>"Those numbers didn't come from hacking an algorithm."</strong> Three years of daily posting, relentless travel, and one question repeated 1,000 times.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ Q5 — WHO HAVE YOU INTERVIEWED? ═══════════ -->
+<section id="q5" class="sec sec-blk3">
+  <div class="sw">
+    <div class="vid-intro rv">
+      <div>
+        <div class="iq" style="margin-bottom:14px"><span style="margin-left:8px">Q: "Who have you actually spoken to?"</span></div>
+        <h2 class="ttsm">The interviews.<br/><em>Watch them.</em></h2>
+      </div>
+      <p class="bb">10 videos from the archive — street interviews, business deep-dives, the million-view format. Every card is clickable. The format is simple. The insight is not. Click anything to watch on YouTube.</p>
+    </div>
+
+    <!-- Row 1 — 3 featured -->
+    <div class="vid-grid-main rv">
+      <div class="vc" onclick="window.open('https://www.youtube.com/watch?v=GCXhTFKVHkg','_blank')">
+        <div class="vc-thumb"><img src="https://img.youtube.com/vi/GCXhTFKVHkg/maxresdefault.jpg" alt="School of Hard Knocks"/><div class="vc-play"><div class="vc-btn"></div></div><div class="vc-badge">Most Viewed</div></div>
+        <div class="vc-info"><div class="vc-cat">Street Interview · Millionaire Advice</div><div class="vc-title">The Flagship Format — How to Get Rich</div><p class="vc-desc"><strong>The most-viewed style of content on the channel.</strong> One question. One millionaire. 60 seconds. The advice that most people pay $200K in tuition to avoid receiving. This is what 282M+ YouTube views looks like.</p></div>
+      </div>
+      <div class="vc" onclick="window.open('https://www.youtube.com/watch?v=9iWLPlPFdBY','_blank')">
+        <div class="vc-thumb"><img src="https://img.youtube.com/vi/9iWLPlPFdBY/maxresdefault.jpg" alt="School of Hard Knocks"/><div class="vc-play"><div class="vc-btn"></div></div><div class="vc-badge vc-badge-blk">Billionaire</div></div>
+        <div class="vc-info"><div class="vc-cat">Billionaire Interview · Long Form</div><div class="vc-title">Billionaire Street Interview</div><p class="vc-desc">15 billionaires interviewed. The format works on every level of wealth because the question is always the same. <strong>"How did you get here?"</strong> The answer is always different. That's the product.</p></div>
+      </div>
+      <div class="vc" onclick="window.open('https://www.youtube.com/watch?v=uMXIsDecZ3s','_blank')">
+        <div class="vc-thumb"><img src="https://img.youtube.com/vi/uMXIsDecZ3s/maxresdefault.jpg" alt="School of Hard Knocks"/><div class="vc-play"><div class="vc-btn"></div></div></div>
+        <div class="vc-info"><div class="vc-cat">Finance · Entrepreneurship · Mindset</div><div class="vc-title">Money Advice — The Real Curriculum</div><p class="vc-desc">The finance niche generates the highest CPMs on YouTube and the most engaged audiences. <strong>This is the content that makes the sponsorship rates exceptional</strong> and the brand partnership ROI demonstrable.</p></div>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="vid-row2 rv">
+      <div class="vc" onclick="window.open('https://www.youtube.com/watch?v=z810EM7Q5Mg','_blank')">
+        <div class="vc-thumb"><img src="https://img.youtube.com/vi/z810EM7Q5Mg/maxresdefault.jpg" alt="School of Hard Knocks"/><div class="vc-play"><div class="vc-btn"></div></div><div class="vc-badge">High Views</div></div>
+        <div class="vc-info"><div class="vc-cat">Street Interview · Viral Format</div><div class="vc-title">The Street Interview Format</div><p class="vc-desc">The core format. Sidewalk. Mic. One question. <strong>The psychological hook that made 20 million people follow.</strong> Authority proximity. Curiosity gap. Fast-value delivery. 60 seconds.</p></div>
+      </div>
+      <div class="vc" onclick="window.open('https://www.youtube.com/watch?v=ZX_BJKKyDXo','_blank')">
+        <div class="vc-thumb"><img src="https://img.youtube.com/vi/ZX_BJKKyDXo/maxresdefault.jpg" alt="School of Hard Knocks"/><div class="vc-play"><div class="vc-btn"></div></div></div>
+        <div class="vc-info"><div class="vc-cat">Entrepreneur · Real Estate · Finance</div><div class="vc-title">From Broke to Millionaire</div><p class="vc-desc">The emotional arc: Have you ever been broke? When? How did it feel? What did you do next? <strong>In one clip, compressed into under a minute.</strong> This is the mirror for a generation.</p></div>
+      </div>
+      <div class="vc" onclick="window.open('https://www.youtube.com/watch?v=5E-lydM23gU','_blank')">
+        <div class="vc-thumb"><img src="https://img.youtube.com/vi/5E-lydM23gU/maxresdefault.jpg" alt="School of Hard Knocks"/><div class="vc-play"><div class="vc-btn"></div></div><div class="vc-badge vc-badge-blk">Founders</div></div>
+        <div class="vc-info"><div class="vc-cat">Brand Story · Behind the Camera</div><div class="vc-title">The School of Hard Knocks — The Brand</div><p class="vc-desc">The founders explain the system. <strong>James, Jack, and Joshua on building a media machine from scratch.</strong> Cold approaches, viral content, the Skool community, and why they think this is just the beginning.</p></div>
+      </div>
+      <div class="vc" onclick="window.open('https://www.youtube.com/watch?v=2Q2JgVDvHV0','_blank')">
+        <div class="vc-thumb"><img src="https://img.youtube.com/vi/2Q2JgVDvHV0/maxresdefault.jpg" alt="School of Hard Knocks"/><div class="vc-play"><div class="vc-btn"></div></div></div>
+        <div class="vc-info"><div class="vc-cat">Business Strategy · Scale · Mindset</div><div class="vc-title">Scaling a Business — Millionaire Advice</div><p class="vc-desc">The deep-dive format — longer, more specific, more tactical. <strong>The content that drives the School of Mentors community conversions.</strong> People who watch this want to pay for more access.</p></div>
+      </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="vid-row3 rv">
+      <div class="vc" onclick="window.open('https://www.youtube.com/watch?v=oDJEZ-n9TCM','_blank')">
+        <div class="vc-thumb"><img src="https://img.youtube.com/vi/oDJEZ-n9TCM/maxresdefault.jpg" alt="School of Hard Knocks"/><div class="vc-play"><div class="vc-btn"></div></div></div>
+        <div class="vc-info"><div class="vc-cat">Finance · Wealth Building</div><div class="vc-title">The Wealth Building Interview</div><p class="vc-desc">The finance content category drives the highest CPMs in the industry. <strong>This is why the sponsorship rates are exceptional</strong> — the audience converting on finance products is the most commercially valuable on YouTube.</p></div>
+      </div>
+      <div class="vc" onclick="window.open('https://www.youtube.com/watch?v=qQIKf7YQBbA','_blank')">
+        <div class="vc-thumb"><img src="https://img.youtube.com/vi/qQIKf7YQBbA/maxresdefault.jpg" alt="School of Hard Knocks"/><div class="vc-play"><div class="vc-btn"></div></div></div>
+        <div class="vc-info"><div class="vc-cat">Entrepreneurship · Success Patterns</div><div class="vc-title">Success Patterns — 1,000 Interviews Later</div><p class="vc-desc">After 1,000+ millionaires, the patterns are clear. <strong>Discipline, persistence, and the willingness to do the unsexy work</strong> appear in almost every conversation. The curriculum writes itself.</p></div>
+      </div>
+      <div class="vc" onclick="window.open('https://www.youtube.com/watch?v=_5yi6XW4Av8','_blank')">
+        <div class="vc-thumb"><img src="https://img.youtube.com/vi/_5yi6XW4Av8/maxresdefault.jpg" alt="School of Hard Knocks"/><div class="vc-play"><div class="vc-btn"></div></div><div class="vc-badge">Education</div></div>
+        <div class="vc-info"><div class="vc-cat">Education Funnel · Community</div><div class="vc-title">School of Mentors — The Community</div><p class="vc-desc">The content that converts viewers into community members. <strong>6,000+ people paying for weekly calls with the millionaires they see in the clips.</strong> This is the funnel at work. This is why the format is genius.</p></div>
+      </div>
+      <div class="vc" onclick="window.open('https://www.youtube.com/@theschoolofhardknocks','_blank')">
+        <div class="vc-thumb"><img src="https://img.youtube.com/vi/GCXhTFKVHkg/maxresdefault.jpg" alt="Full Channel"/><div class="vc-play"><div class="vc-btn"></div></div><div class="vc-badge vc-badge-blk">Full Channel →</div></div>
+        <div class="vc-info"><div class="vc-cat">YouTube Channel · 1.97M Subscribers · 726 Videos</div><div class="vc-title">@theschoolofhardknocks — Full Archive</div><p class="vc-desc"><strong>1.97M subscribers. 282M+ views. 726 videos.</strong> The full archive — street interviews, in-depth conversations, behind-the-scenes, Hard Knocks Business, Hard Knocks Women. Click to see the full ecosystem.</p></div>
+      </div>
+    </div>
+    <p style="font-family:var(--fm);font-size:.44rem;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);text-align:center;margin-top:20px" class="rv">← Click any card to watch on YouTube →</p>
+  </div>
+</section>
+
+<!-- ═══════════ INTERVIEW NAMES WALL ═══════════ -->
+<section id="wall" style="background:var(--blk2);padding:60px 0;overflow:hidden">
+  <div class="wall-h rv">
+    <div>
+      <div class="iq" style="margin-bottom:10px"><span style="margin-left:8px">Q: "Anyone impressive on that list?"</span></div>
+      <h2 class="ttsm">1,000+ millionaires.<br/>15 billionaires. <em>One question.</em></h2>
+    </div>
+  </div>
+  <div class="name-rows">
+    <div class="name-row">
+      <div class="nt-a">
+        <span class="ni hi">Mark Cuban</span><span class="ni">Beverly Hills Founders</span><span class="ni hi">Will Smith</span><span class="ni">Real Estate Operators</span><span class="ni hi">Gary Vee</span><span class="ni">Dallas Multi-Millionaires</span><span class="ni hi">Kendra Scott</span><span class="ni">Tech Founders</span><span class="ni hi">Elliot Hill (Nike)</span><span class="ni">E-Commerce Builders</span>
+        <span class="ni hi">Mark Cuban</span><span class="ni">Beverly Hills Founders</span><span class="ni hi">Will Smith</span><span class="ni">Real Estate Operators</span><span class="ni hi">Gary Vee</span><span class="ni">Dallas Multi-Millionaires</span><span class="ni hi">Kendra Scott</span><span class="ni">Tech Founders</span><span class="ni hi">Elliot Hill (Nike)</span><span class="ni">E-Commerce Builders</span>
+      </div>
+    </div>
+    <div class="name-row">
+      <div class="nt-b">
+        <span class="ni">Salt Lake City Entrepreneurs</span><span class="ni hi">Dave Bautista</span><span class="ni">Private Equity Investors</span><span class="ni hi">Tom Cruise (requested)</span><span class="ni">Prison-to-Millionaire</span><span class="ni hi">Adinross</span><span class="ni">$2B Revenue Founders</span><span class="ni hi">Lynnwood Bibbens</span><span class="ni">Adley Kinsman</span><span class="ni hi">8-Figure Founders</span>
+        <span class="ni">Salt Lake City Entrepreneurs</span><span class="ni hi">Dave Bautista</span><span class="ni">Private Equity Investors</span><span class="ni hi">Tom Cruise (requested)</span><span class="ni">Prison-to-Millionaire</span><span class="ni hi">Adinross</span><span class="ni">$2B Revenue Founders</span><span class="ni hi">Lynnwood Bibbens</span><span class="ni">Adley Kinsman</span><span class="ni hi">8-Figure Founders</span>
+      </div>
+    </div>
+    <div class="name-row">
+      <div class="nt-a">
+        <span class="ni">VC-Backed Startups ($100M+)</span><span class="ni hi">Mo Barachi</span><span class="ni">Marcus Whitney</span><span class="ni hi">Carolyn Aronson (It's a 10)</span><span class="ni">NFL Athletes turned Founders</span><span class="ni hi">Samantha Maestro (Millionaire at 26)</span><span class="ni">Single-Family Real Estate</span><span class="ni hi">Dan Honig</span>
+        <span class="ni">VC-Backed Startups ($100M+)</span><span class="ni hi">Mo Barachi</span><span class="ni">Marcus Whitney</span><span class="ni hi">Carolyn Aronson (It's a 10)</span><span class="ni">NFL Athletes turned Founders</span><span class="ni hi">Samantha Maestro (Millionaire at 26)</span><span class="ni">Single-Family Real Estate</span><span class="ni hi">Dan Honig</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ Q6 — THE BUSINESS MODEL ═══════════ -->
+<section id="q6" class="sec sec-blk">
+  <div class="sw">
+    <div class="biz-intro rv">
+      <div>
+        <div class="iq" style="margin-bottom:14px"><span style="margin-left:8px">Q: "So what are all the ways you're actually making money?"</span></div>
+        <h2 class="ttsm">7 revenue streams.<br/><em>One format.</em></h2>
+      </div>
+      <p class="bb">The content is the smallest revenue source. Ad revenue is estimated at $7–10K/month. The real money is in what the content unlocks: community access, agency contracts, consulting fees, speaking engagements, and brand partnerships in one of the highest-CPM niches on the internet. Vertical integration — exactly like James says in his interviews.</p>
+    </div>
+    <div class="biz-grid rv">
+      <div class="bc"><span class="bc-icon">📺</span><div class="bc-n">Platform Revenue</div><p class="bc-b"><strong>$7–10K/month YouTube AdSense.</strong> Plus TikTok and Instagram creator funds. The smallest piece of the stack — but it's the distribution engine that powers everything else. The platform pays them to grow the audience that feeds the real revenue streams.</p><div class="bc-val">~$7–10K/mo · Smallest stream</div></div>
+      <div class="bc"><span class="bc-icon">💼</span><div class="bc-n">Brand Sponsorships</div><p class="bc-b">Finance niche = highest CPMs in YouTube (~$50–200). A finance sponsor reaching 20M followers across platforms can expect <strong>extremely competitive ROI.</strong> Major financial product, investment platform, and business tool integrations are the primary sponsorship category.</p><div class="bc-val">$50–200K/mo est.</div></div>
+      <div class="bc"><span class="bc-icon">🎓</span><div class="bc-n">School of Mentors</div><p class="bc-b"><strong>6,000+ paying members.</strong> Launched June 2024 on Skool. Members get weekly live calls with the millionaires and billionaires interviewed on the channel. The content funnel converts viewers into community members — the format's most elegant monetization layer.</p><div class="bc-val">6,000+ members · Growing</div></div>
+      <div class="bc"><span class="bc-icon">🎬</span><div class="bc-n">Content Agency</div><p class="bc-b">They produce viral content for external brands. <strong>"We consult for companies and people trying to do the exact same thing."</strong> Having generated 4–5 billion organic views, they now sell that expertise as a managed service. B2B revenue that compounds as the brand's credibility grows.</p><div class="bc-val">B2B · Viral Content Production</div></div>
+      <div class="bc"><span class="bc-icon">🧠</span><div class="bc-n">High-Ticket Consulting</div><p class="bc-b">Content strategy consulting for large brands and operators trying to replicate their growth. <strong>"Since we've done over 4–5 billion views in the last four years, now we consult."</strong> The proof is the pitch. No case study needed — just show the view count.</p><div class="bc-val">High Ticket · Strategy Sessions</div></div>
+      <div class="bc"><span class="bc-icon">🎤</span><div class="bc-n">Keynote Speaking</div><p class="bc-b"><strong>$30,000–$50,000 per keynote.</strong> Listed with Gotham Artists. Topics: Patterns of Success · The Attention Economy · Viral by Design · The Art of the Question. All three founders speak. James is the face. Jack has the system story. Josh has the growth numbers.</p><div class="bc-val">$30–50K per appearance</div></div>
+      <div class="bc"><span class="bc-icon">📰</span><div class="bc-n">Newsletter — Beehiiv</div><p class="bc-b">schoolofhardknocks.beehiiv.com — email-based distribution of interview insights. The <strong>owned audience layer</strong> that doesn't depend on any platform's algorithm. Direct-to-subscriber. One of the more important long-term assets in the stack.</p><div class="bc-val">Beehiiv · Owned Audience</div></div>
+      <div class="bc"><span class="bc-icon">🌐</span><div class="bc-n">Sub-Brand Ecosystem</div><p class="bc-b"><strong>Hard Knocks Women</strong> (Jack) + <strong>Hard Knocks Business</strong> (newest, inside the rooms most never access). Each sub-brand extends the audience and creates new sponsorship categories. The main brand is the engine. The sub-brands are the cylinders firing independently.</p><div class="bc-val">Hard Knocks Women · Hard Knocks Business</div></div>
+    </div>
+    <div class="gap-bar rv">
+      <div class="gap-q">The gap<br/>Kuro sees</div>
+      <p class="gap-a"><strong>5 separate businesses with no command centre.</strong> Someone lands on YouTube — they don't know about the agency. Someone finds Skool — they don't know about Hard Knocks Business. Someone books a speaking engagement — they don't know about the newsletter. Every revenue stream is siloed. James Dumoulin is invisible as a founder — everywhere as a face, nowhere as a business leader. <strong>The flagship site is the revenue routing system that currently doesn't exist.</strong> Forbes hasn't covered them yet. The site is the infrastructure for the Forbes pitch.</p>
+      <a href="#partner" class="bt-blk">Build It With Kuro →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PRESS ═══════════ -->
+<section id="press" class="sec sec-blk2">
+  <div class="sw">
+    <div class="rv" style="margin-bottom:8px">
+      <div class="iq" style="margin-bottom:14px"><span style="margin-left:8px">Q: "Who's been covering you?"</span></div>
+      <div class="g2" style="align-items:end">
+        <h2 class="ttsm">The press is<br/><em>accelerating.</em></h2>
+        <p class="bb">VUE Magazine December 2025. Roe Magazine January 2026. Fox & Friends October 2025. UNILAD. The Guardian. UniLAD Tech. The Longhorn Way Podcast. Building Bridges Summit keynote. Forbes hasn't written the story yet. <strong>That's the next unlock.</strong></p>
+      </div>
+    </div>
+    <div class="plscroll rv">
+      <div class="pltrack">
+        <div class="pllogo">Fox & Friends</div><div class="pllogo">VUE Magazine</div><div class="pllogo">Roe Magazine</div>
+        <div class="pllogo">UNILAD</div><div class="pllogo">The Guardian</div><div class="pllogo">UniLAD Tech</div>
+        <div class="pllogo">Gotham Artists</div><div class="pllogo">Longhorn Way</div><div class="pllogo">Spotify Podcasts</div>
+        <div class="pllogo">Fox & Friends</div><div class="pllogo">VUE Magazine</div><div class="pllogo">Roe Magazine</div>
+        <div class="pllogo">UNILAD</div><div class="pllogo">The Guardian</div><div class="pllogo">UniLAD Tech</div>
+        <div class="pllogo">Gotham Artists</div><div class="pllogo">Longhorn Way</div><div class="pllogo">Spotify Podcasts</div>
+      </div>
+    </div>
+    <div class="pcards rv">
+      <div class="pcard"><div class="ppub">VUE Magazine · December 2025</div><div class="phl">"James Dumoulin is a Self-Made Millionaire — and he built a media empire from a sidewalk"</div><p class="pbdy">The feature that confirmed the national media is arriving. <strong>"James is so well known that Tom Cruise requested an interview from him."</strong> The pivot from children's business advice channel to global millionaire interview franchise — told in full.</p></div>
+      <div class="pcard"><div class="ppub">Roe Magazine · January 18, 2026</div><div class="phl">"Where Attention Goes, Revenue Flows" — James Dumoulin</div><p class="pbdy">"There is something disarming about him in person — soft-spoken, grounded, no rush to impress — and yet he has built one of the loudest, widest-reaching business education platforms on the internet." <strong>The revenue confirmation: every month in 2025 exceeded $500,000.</strong></p></div>
+      <div class="pcard"><div class="ppub">Fox & Friends · Fox News · October 2025</div><div class="phl">All three founders on national television discussing growth and tips for financial success</div><p class="pbdy">James, Jack, and Joshua Dumoulin appeared on Fox & Friends on October 20, 2025. <strong>National television, morning show, three co-founders.</strong> The mainstream media arrival. Fox News segment archived and available.</p></div>
+      <div class="pcard"><div class="ppub">The Guardian / UNILAD Tech · June 2024</div><div class="phl">"Nearly all millionaires have the same response when man asks them how they got rich"</div><p class="pbdy">The Guardian and UNILAD covered the pattern their interviews reveal — discipline, persistence, decades of unsexy work. <strong>International media discovering the channel.</strong> The UK and European audience adds to the 20M+ global reach.</p></div>
+      <div class="pcard"><div class="ppub">Gotham Artists · Speaker Bureau</div><div class="phl">$30,000–$50,000 speaking fee per keynote · Officially listed</div><p class="pbdy">Listed with Gotham Artists, one of the US's leading speaker bureaus. Keynote topics confirmed: Patterns of Success, The Attention Economy, Viral by Design, The Art of the Question. <strong>Building Bridges Summit confirmed attendance.</strong> The corporate calendar is filling.</p></div>
+      <div class="pcard"><div class="ppub">Longhorn Way Podcast · 2024</div><div class="phl">"James Dumoulin launched a subscription community in June 2024 that now has 6,000 members and growing"</div><p class="pbdy">The Longhorn Way Podcast covered the School of Mentors launch in detail — 6,000 members in under a year, all organic, all driven by content. <strong>"Bridging everyday people with the world's best — by building a real community."</strong></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="partner">
+  <div class="psplit">
+    <div class="pleft rvl">
+      <div class="iq iq-lt" style="margin-bottom:14px"><span style="margin-left:8px">Q: "How do we work together?"</span></div>
+      <h2 class="ttsm ttsm-dk" style="margin-bottom:20px">Partner<br/><em>with us.</em></h2>
+      <p class="bb-dk" style="margin-bottom:28px">20M+ audience. $500K+/month. Finance niche CPMs. 6,000+ community members. Brand partnerships, speaking engagements, content agency services, consulting, and community sponsorships. The partnership reaches the most commercially valuable young audience in the financial education space.</p>
+      <div class="pform">
+        <div style="display:flex;flex-direction:column;gap:5px"><label class="pflbl">Company / Brand Name</label><input class="pfinp" type="text" placeholder="Your company"/></div>
+        <div style="display:flex;flex-direction:column;gap:5px"><label class="pflbl">Contact Name &amp; Email</label><input class="pfinp" type="email" placeholder="name@company.com"/></div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <label class="pflbl">Partnership Type</label>
+          <select class="pfinp" style="cursor:none">
+            <option>Select...</option>
+            <option>Brand Sponsorship (YouTube / Social)</option>
+            <option>School of Mentors Community Sponsorship</option>
+            <option>Content Marketing Agency</option>
+            <option>Content Strategy Consulting</option>
+            <option>Keynote Speaking ($30K–$50K)</option>
+            <option>Brand Integration / Product Feature</option>
+            <option>Hard Knocks Women / Business Partnership</option>
+            <option>Newsletter Sponsorship (Beehiiv)</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:5px"><label class="pflbl">Tell me about the project</label><textarea class="pfinp" style="resize:vertical;min-height:88px" placeholder="Budget, timeline, goals..."></textarea></div>
+        <button class="bt-yel" style="cursor:none;border:none;text-align:center;width:100%">Submit Enquiry →</button>
+      </div>
+    </div>
+    <div class="pright rvr">
+      <div class="iq" style="margin-bottom:14px"><span style="margin-left:8px">A: "Here's how to reach us."</span></div>
+      <h2 class="ttsm" style="margin-bottom:28px">Get in <em>touch.</em></h2>
+      <div class="contact-list">
+        <div class="ci"><div class="cil">YouTube Channel</div><div class="civ">@theschoolofhardknocks</div><div class="cis">1.97M subscribers · 282M+ views · 726 videos · Primary long-form content platform. Brand integration and sponsorship enquiries.</div></div>
+        <div class="ci"><div class="cil">Instagram</div><div class="civ">@theschoolofhardknockz · 9M</div><div class="cis">Primary social platform. Finance niche. Highest commercial value audience per follower in the creator economy. Short-form brand integrations.</div></div>
+        <div class="ci"><div class="cil">School of Mentors — Skool Community</div><div class="civ">skool.com/school-of-mentors-1850</div><div class="cis">6,000+ paying community members. Weekly calls with millionaires and billionaires. Sponsorship and brand access to the most engaged entrepreneurship audience anywhere online.</div></div>
+        <div class="ci"><div class="cil">Speaking Bookings</div><div class="civ">Via Gotham Artists · $30–50K per keynote</div><div class="cis">James Dumoulin, Jack Dumoulin, Joshua Smith — all available for keynote appearances. Virtual from $30K. In-person from $40–50K. Topics: content, entrepreneurship, patterns of success.</div></div>
+        <div class="ci"><div class="cil">Content Agency + Consulting</div><div class="civ">theschoolofhardknocks.com</div><div class="cis">Viral content production and strategy consulting for brands. 4–5 billion organic views of experience. If you need your brand to reach a young entrepreneurship audience, this is the team that knows how.</div></div>
+      </div>
+      <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:10px">
+        <a href="https://www.instagram.com/theschoolofhardknockz/" target="_blank" class="bt-ghost">Instagram ↗</a>
+        <a href="https://www.youtube.com/@theschoolofhardknocks" target="_blank" class="bt-ghost">YouTube ↗</a>
+        <a href="https://www.skool.com/school-of-mentors-1850/about" target="_blank" class="bt-yel">School of Mentors →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fi">
+    <div class="ftop">
+      <div>
+        <div class="flogo">SCHOOL OF <span>HARD KNOCKS</span></div>
+        <p class="fdesc">Founded 2021. Atlanta, GA. James Dumoulin (host, co-founder), Jack Dumoulin (operations, co-founder), Joshua Smith (content strategy, co-founder). 1.97M YouTube · 9M Instagram · 5.4M TikTok · 4.8M Facebook. $500K+/month every month in 2025. 1,000+ millionaires interviewed. 15 billionaires. Mark Cuban. Will Smith. Gary Vee. Kendra Scott. Tom Cruise (requested). Hard Knocks Women. Hard Knocks Business. School of Mentors. "Excuse me sir — how did you become successful?"</p>
+      </div>
+      <div class="fcol">
+        <div class="fcolh">Navigate</div>
+        <a href="#q1">The Business</a>
+        <a href="#q2">The Origin</a>
+        <a href="#q3">The Founders</a>
+        <a href="#q4">The Numbers</a>
+        <a href="#q5">The Interviews</a>
+        <a href="#q6">Revenue Model</a>
+      </div>
+      <div class="fcol">
+        <div class="fcolh">Platforms</div>
+        <a href="https://www.youtube.com/@theschoolofhardknocks" target="_blank">YouTube ↗</a>
+        <a href="https://www.instagram.com/theschoolofhardknockz/" target="_blank">Instagram ↗</a>
+        <a href="https://www.tiktok.com/@theschoolofhardknockz" target="_blank">TikTok ↗</a>
+        <a href="https://www.facebook.com/theschoolofhardknockz" target="_blank">Facebook ↗</a>
+        <a href="https://www.skool.com/school-of-mentors-1850" target="_blank">Skool Community ↗</a>
+        <a href="https://schoolofhardknocks.beehiiv.com/" target="_blank">Newsletter ↗</a>
+      </div>
+      <div class="fcol">
+        <div class="fcolh">Work Together</div>
+        <a href="#partner">Brand Sponsorship</a>
+        <a href="#partner">Keynote Speaking</a>
+        <a href="#partner">Content Agency</a>
+        <a href="#partner">Consulting</a>
+        <a href="https://www.skool.com/school-of-mentors-1850" target="_blank">School of Mentors ↗</a>
+      </div>
+    </div>
+    <div class="fbot">
+      <div class="fcopy">© 2025 The School of Hard Knocks LLC · Atlanta, GA · theschoolofhardknocks.com</div>
+      <a href="https://kuro-digital-acid-lime.onrender.com/" target="_blank" class="fkuro">Site by Kuro Digital ↗</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+
+/* LOADER */
+(function(){
+  const f=document.getElementById('lf'),l=document.getElementById('loader');
+  if(!f||!l)return;
+  let w=0;
+  const iv=setInterval(()=>{
+    w+=Math.random()*8+5;
+    if(w>=100){w=100;clearInterval(iv);}
+    f.style.width=w+'%';
+    if(w>=100)setTimeout(()=>l.classList.add('out'),1200);
+  },140);
+})();
+
+/* CURSOR */
+(function(){
+  const d=document.getElementById('cur'),r=document.getElementById('cur-r');
+  if(!d||!r)return;
+  let mx=0,my=0,dx=0,dy=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+  (function f(){dx+=(mx-dx)*.2;dy+=(my-dy)*.2;rx+=(mx-rx)*.1;ry+=(my-ry)*.1;
+    d.style.left=dx+'px';d.style.top=dy+'px';r.style.left=rx+'px';r.style.top=ry+'px';
+    requestAnimationFrame(f);})();
+  document.querySelectorAll('a,button,select,.ws,.sl,.hst,.vc,.nc,.pcard,.bc,.fc,.ci,.ni').forEach(el=>{
+    el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+    el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
+  });
+})();
+
+/* NAV */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('stk',scrollY>60));
+document.getElementById('hbtn').addEventListener('click',()=>document.getElementById('mob').classList.toggle('open'));
+
+/* SCROLL REVEAL */
+const io=new IntersectionObserver(entries=>entries.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}
+}),{threshold:0,rootMargin:'0px 0px -28px 0px'});
+document.querySelectorAll('.rv,.rvl,.rvr').forEach(el=>{
+  if(el.getBoundingClientRect().top<innerHeight)el.classList.add('on');
+  else io.observe(el);
+});
+
+})();
+</script>
+</body>
+</html>
